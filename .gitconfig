@@ -1,0 +1,21 @@
+[user]
+	name = Tom Manville
+	email = tdmanville@gmail.com
+[github]
+	user = tdmanv
+	token = 82f0250f2ceb2c3ced49939120b4b854
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[core]
+	excludesfile = /home/tdmanville/.gitignore_global
+	editor = vim
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+[alias]
+	ls = "for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
+[push]
+	default = simple
