@@ -2,8 +2,7 @@
 " => General 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " Sets how many lines of history VIM has to remember set history=700 
-" Enable filetype plugin filetype plugin on filetype indent on 
-" Set to auto read when a file is changed from the outside set autoread
+" Enable filetype plugin filetype plugin on filetype indent on " Set to auto read when a file is changed from the outside set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -502,6 +501,13 @@ au FileType javascript set shiftwidth=2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
 " => java
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au FileType ruby set expandtab
+au FileType ruby set shiftwidth=2
+au FileType ruby set tabstop=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
+" => java
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au FileType java set expandtab
 au FileType java set shiftwidth=4
 au FileType java set tabstop=4
@@ -557,6 +563,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 
+"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
