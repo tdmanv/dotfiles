@@ -572,28 +572,16 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/TaskList.vim'
 "Bundle 'davidhalter/jedi-vim' 
 Bundle 'godlygeek/tabular' 
-"Bundle 'klen/python-mode' 
-"Bundle 'mileszs/ack.vim'
-"Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/Vim-JDE'
 "Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
-Bundle 'msanders/snipmate.vim'
 Bundle 'vim-scripts/git-time-lapse'
 Bundle 'vim-scripts/autoload_cscope.vim'
 "Bundle 'vim-scripts/cscope-quickfix'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'rking/ag.vim'
-"TODO - looks awesome
-
-
-
-"
-
-"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
