@@ -332,6 +332,8 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.java :call DeleteTrailingWS()
 autocmd BufWrite *.sh :call DeleteTrailingWS()
+autocmd BufWrite *.pp :call DeleteTrailingWS()
+autocmd BufWrite *.rb :call DeleteTrailingWS()
 
 set guitablabel=%t
 
@@ -451,6 +453,7 @@ map gf <C-w>gf
 imap jj <Esc>jj
 noremap <f9> :wa<cr>:make clean; make<cr>
 nmap <leader>s :tab split<cr>
+nmap <leader> :%!xxd<cr>
 
 set tabpagemax=50
 "map <f1> ^yEIcout << "<ESC>pi: " << <ESC>pi << endl;
@@ -499,8 +502,9 @@ au FileType javascript set tabstop=2
 au FileType javascript set shiftwidth=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
-" => java
+" => ruby
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.pp set syntax=ruby
 au FileType ruby set expandtab
 au FileType ruby set shiftwidth=2
 au FileType ruby set tabstop=2
@@ -568,28 +572,27 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
+Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/TaskList.vim'
-"Bundle 'davidhalter/jedi-vim' 
 Bundle 'godlygeek/tabular' 
-Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/Vim-JDE'
-"Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/git-time-lapse'
 Bundle 'vim-scripts/autoload_cscope.vim'
-"Bundle 'vim-scripts/cscope-quickfix'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'rking/ag.vim'
+Bundle 'salsifis/vim-transpose'
+
 
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tabular shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cmap <leader>= Tabularize /^[^=]*/l0<CR>
-cmap <leader>] Tabularize /^[^\[]*/l0<CR>
+vmap <leader>= Tabularize /^[^=]*/l0<CR>
+vmap <leader>] Tabularize /^[^\[]*/l0<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Powerline setup
