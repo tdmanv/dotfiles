@@ -1,0 +1,7 @@
+[user]
+	email = tdmanville@maginatics.com
+	name = Tom Manville
+[core]
+	editor = vim
+[push]
+	default = simple
