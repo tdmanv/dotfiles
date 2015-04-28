@@ -453,7 +453,7 @@ map gf <C-w>gf
 imap jj <Esc>jj
 noremap <f9> :wa<cr>:make clean; make<cr>
 nmap <leader>s :tab split<cr>
-nmap <leader> :%!xxd<cr>
+nmap <leader>x :%!xxd<cr>
 
 set tabpagemax=50
 "map <f1> ^yEIcout << "<ESC>pi: " << <ESC>pi << endl;
@@ -574,6 +574,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
+Bundle 'aperezdc/vim-template'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'godlygeek/tabular' 
@@ -612,6 +613,17 @@ map <F3> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  endif
+endfunction
+au BufEnter /* call LoadCscope()
+
 set cscopequickfix=g-,s-,c-,d-,i-,t-,e-
 nmap <leader>cc lb"tye:cs f c <C-r>t<CR>
 nmap <leader>cg lb"tye:cs f g <C-r>t<CR>
@@ -623,3 +635,10 @@ nmap <leader>a lb"tye:Ag <C-r>t<CR>
 " => git-time-lapse
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>gt :call TimeLapse() <cr> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.md set syntax=markdown
+autocmd BufWrite *.md :call DeleteTrailingWS()
+
