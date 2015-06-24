@@ -585,6 +585,7 @@ Bundle 'vim-scripts/autoload_cscope.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'salsifis/vim-transpose'
+Bundle 'fatih/vim-go'
 
 
 filetype plugin indent on

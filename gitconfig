@@ -1,10 +1,10 @@
 [user]
-	email = tdmanville@maginatics.com
+	email = manville@dropbox.com
 	name = Tom Manville
 [core]
 	editor = vim
 [push]
-	default = simple
+    default = simple
 [diff]
 	tool = vimdiff
 [difftool]
