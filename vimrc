@@ -568,7 +568,7 @@ call vundle#rc()
 " required!
 
 "git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
