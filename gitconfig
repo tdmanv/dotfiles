@@ -11,3 +11,4 @@
 	prompt = false
 [alias]
 	ls = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
+    glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph

@@ -411,7 +411,7 @@ au FileType python map <buffer> <leader>D ?def
 " => Command-T
 """"""""""""""""""""""""""""""
 "let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.html,*.xml
+set wildignore+=*.o,*.obj,.git,*.pyc,*.class,
 noremap <leader>j :CommandT<cr>
 noremap <leader>y :CommandTFlush<cr>
 
@@ -541,8 +541,6 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 set number
 
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
 " => vimgdb
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -552,7 +550,6 @@ set previewheight=12			" set gdb window initial height
 run macros/gdb_mappings.vim		" source key mappings listed in this document
 "set asm=0						" don't show any assembly stuff
 "set gdbprg=/usr/bin/gdb
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -642,4 +639,9 @@ map <leader>gt :call TimeLapse() <cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.md set syntax=markdown
 autocmd BufWrite *.md :call DeleteTrailingWS()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => time
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>r :r!"date +'%M'"
 
