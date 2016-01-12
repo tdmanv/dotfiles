@@ -1,0 +1,45 @@
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
+# enable utf-8 on status bar
+set -g status on
+set -g status-utf8 on
+
+unbind C-b
+set -g prefix C-a
+
+unbind %
+bind | split-window -h
+bind - split-window -v
+
+set-window-option -g mode-keys vi
+
+bind C-h select-pane -L
+bind C-j select-pane -D
+bind C-k select-pane -U
+bind C-l select-pane -R
+
+#set -g default-terminal "xterm"
+#sudo pip install git+git://github.com/Lokaltog/powerline
+source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
+#source ~/.local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf
+
+set-option -g default-terminal "screen-256color"
+
+# Set window notifications
+setw -g monitor-activity on
+set -g visual-activity on
+
+set -g history-limit 50000
+
+# Copy tmux buffer to system clipboard
+#bind y run-shell "tmux show-buffer | xclip -sel clip -i" \; display-message "Copied tmux buffer to system clipboard"
+bind y run-shell "tmux show-buffer | pbcopy" \; display-message "Copied tmux buffer to system clipboard"
+
+

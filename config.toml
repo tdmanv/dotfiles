@@ -4,6 +4,10 @@
 [macros.install]
     prefix = ["sudo", "apt-get", "install", "-y"]
 
+# Not implemented
+[macros.install__mac]
+    prefix = ["INVALID_COMMAND", "ABORT"]
+
 [macros.clone]
     prefix = ["git", "clone"]
 
@@ -31,6 +35,8 @@
 #
 [tasks.bash]
     links = [["${HM_DEST}/.bashrc", "bashrc"]]
+[tasks.bash__mac]
+    links = [["${HM_DEST}/.bashrc", "bashrc__mac"]]
 
 [tasks.git]
     cmds = [["@install", "git"]]
@@ -39,6 +45,9 @@
 [tasks.tmux]
     cmds = [["@install", "tmux"]]
     links = [["${HM_DEST}/.tmux.conf", "tmux.conf"]]
+
+[tasks.tmux__mac]
+    links = [["${HM_DEST}/.tmux.conf", "tmux.conf__mac"]]
 
 [tasks.tmux_powerline]
     cmds = [
