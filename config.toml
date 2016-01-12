@@ -1,0 +1,83 @@
+#
+# macros
+#
+[macros.install]
+    prefix = ["sudo", "apt-get", "install", "-y"]
+
+[macros.clone]
+    prefix = ["git", "clone"]
+
+#
+# languages
+#
+
+[tasks.python]
+    cmds = [["@install", "python-dev", "python-pip"]]
+
+#
+# vim plugins
+#
+[tasks.vim_plugin_ag]
+    cmds = [
+        ["wget", "http://swiftsignal.com/packages/ubuntu/precise/the-silver-searcher_0.14-1_amd64.deb"],
+        ["sudo", "dpkg", "-i", "the-silver-searcher_0.14-1_amd64.deb"],
+        ["pwd"],
+        ["rm", "the-silver-searcher_0.14-1_amd64.deb"],
+    ]
+
+#
+# tools
+#
+#
+[tasks.bash]
+    links = [["${HM_DEST}/.bashrc", "bashrc"]]
+
+[tasks.git]
+    cmds = [["@install", "git"]]
+    links = [["${HM_DEST}/.gitconfig", "gitconfig"]]
+
+[tasks.tmux]
+    cmds = [["@install", "tmux"]]
+    links = [["${HM_DEST}/.tmux.conf", "tmux.conf"]]
+
+[tasks.tmux_powerline]
+    cmds = [
+        ["wget", "https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf", "https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf"],
+        ["install", "fontconfig"],
+        ["sudo", "mv", "PowerlineSymbols.otf", "/usr/share/fonts/"],
+        ["sudo", "fc-cache", "-vf"],
+        ["sudo", "mv", "10-powerline-symbols.conf", "/etc/fonts/conf.d/"],
+    ]
+
+[tasks.vimrc]
+    links = [["${HM_DEST}/.vimrc", "vimrc"]]
+
+[tasks.vim_upgrade]
+    cmds = [
+        ["sudo", "add-apt-repository", "ppa:fcwu-tw/ppa"],
+        ["sudo", "apt-get", "update"],
+        ["@install", "vim"],
+    ]
+
+[tasks.vim_complete]
+    deps = ["vim_extra"]
+    cmds = [["@install", "cmake", "g++"]]
+ 
+[tasks.vim_extra]
+    deps = ["vim", "vim_plugin_ag"]
+    cmds = [["@install", "exuberant-ctags", "cscope"]]
+
+[tasks.vim]
+    deps = ["git", "vimrc"]
+    cmds = [
+        ["@install", "vim", "bash-completion", "python-dev"],
+        ["@clone", "https://github.com/gmarik/vundle.git", "${HM_DEST}/.vim/bundle/vundle"],
+        ["vim", "+BundleInstall", "+qall"],
+    ]
+
+#
+# high level tasks
+#
+
+[tasks.default]
+    deps = ["bash", "git", "tmux", "vim"]
