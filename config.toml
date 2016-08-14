@@ -2,7 +2,7 @@
 # macros
 #
 [macros.install]
-    prefix = ["sudo", "apt-get", "install", "-y"]
+    prefix = ["apt-get", "install", "-y"]
 
 # Not implemented
 [macros.install__mac]
@@ -24,7 +24,7 @@
 [tasks.vim_plugin_ag]
     cmds = [
         ["wget", "http://swiftsignal.com/packages/ubuntu/precise/the-silver-searcher_0.14-1_amd64.deb"],
-        ["sudo", "dpkg", "-i", "the-silver-searcher_0.14-1_amd64.deb"],
+        ["dpkg", "-i", "the-silver-searcher_0.14-1_amd64.deb"],
         ["pwd"],
         ["rm", "the-silver-searcher_0.14-1_amd64.deb"],
     ]
@@ -53,9 +53,9 @@
     cmds = [
         ["wget", "https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf", "https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf"],
         ["install", "fontconfig"],
-        ["sudo", "mv", "PowerlineSymbols.otf", "/usr/share/fonts/"],
-        ["sudo", "fc-cache", "-vf"],
-        ["sudo", "mv", "10-powerline-symbols.conf", "/etc/fonts/conf.d/"],
+        ["mv", "PowerlineSymbols.otf", "/usr/share/fonts/"],
+        ["fc-cache", "-vf"],
+        ["mv", "10-powerline-symbols.conf", "/etc/fonts/conf.d/"],
     ]
 
 [tasks.vimrc]
@@ -63,8 +63,8 @@
 
 [tasks.vim_upgrade]
     cmds = [
-        ["sudo", "add-apt-repository", "ppa:fcwu-tw/ppa"],
-        ["sudo", "apt-get", "update"],
+        ["add-apt-repository", "ppa:fcwu-tw/ppa"],
+        ["apt-get", "update"],
         ["@install", "vim"],
     ]
 
