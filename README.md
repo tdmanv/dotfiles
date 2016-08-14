@@ -9,6 +9,12 @@ http://linuxg.net/how-to-install-vim-7-4-on-ubuntu-13-10-13-04-12-04-linux-mint-
 cd
 git clone git@github.com:tdmanv/dotfiles.git
 ```
+```
+cd
+curl -sLO https://github.com/tdmanv/dotfiles/archive/master.tar.gz
+tar xvf master.tar.gz
+mv dotfiles-master
+```
 ### Install dotfiles using homemaker
 If go is installed
 ```
@@ -19,7 +25,7 @@ GOPATH=$(pwd)/go go get github.com/FooSoft/homemaker
 or
 ```
 cd dotfiles
-wget https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz
+curl -sLO https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz
 tar xvf ./homemaker_linux_amd64.tar.gz
 ./homemaker_linux_amd64/homemaker --verbose --task=bash --variant=mac config.toml .
 
