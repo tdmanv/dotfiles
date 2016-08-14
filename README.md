@@ -31,4 +31,15 @@ tar xvf ./homemaker_linux_amd64.tar.gz
 
 ```
 
+## Prebuilt docket image
+
+FROM tdmanville/devbase
+
+To build:
+```
+docker build -t tdmanville/devbase .
+```
+TODO:
+ - Specify baseimage version rather than use latest.
+ - Version devbase
 
