@@ -63,7 +63,7 @@
 
 [tasks.vim_upgrade]
     cmds = [
-        ["add-apt-repository", "ppa:fcwu-tw/ppa"],
+        ["add-apt-repository", "ppa:nmi/vim-snapshots"],
         ["apt-get", "update"],
         ["@install", "vim"],
     ]
