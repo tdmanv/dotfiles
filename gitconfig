@@ -3,6 +3,7 @@
 	name = Tom Manville
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [push]
     default = simple
 [diff]

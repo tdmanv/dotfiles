@@ -481,6 +481,13 @@ au BufNewFile,BufRead *.tex set filetype=tex
 au! BufNewFile,BufRead *.csv setf csv
 
 
+""""""""""""""""""""""""""""""
+" => Golang Section
+""""""""""""""""""""""""""""""
+
+au FileType go map <leader>gi :GoImplements<CR>
+au FileType go map <leader>gb :GoDescribe<CR>
+au FileType go map <leader>gd :tabedit %<CR>gT:GoDef<CR>
 
 "La Tex
 "IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -580,7 +587,7 @@ Bundle 'vim-scripts/Vim-JDE'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/git-time-lapse'
 Bundle 'vim-scripts/autoload_cscope.vim'
-Bundle 'SirVer/ultisnips'
+"Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'salsifis/vim-transpose'
 Bundle 'fatih/vim-go'
