@@ -26,7 +26,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-
 # Enables git completion if the file exists.
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
@@ -34,3 +33,18 @@ fi
 
 PS1='[\[\e[1;34m\]\t\[\e[m\]]\[\e[1;32m\]\u@\h\[\e[m\]:`__git_ps1`\[\e[1;35m\]\w/\[\e[m\] '
 set -o vi
+
+# Kubernetes Specific
+if [ -x "$(command -v kubectl)" ]; then
+    source <(kubectl completion bash)
+fi
+
+kc() {
+    local cluster=${1:-"testcluster5.aws.kasten.io"}
+    kops export kubecfg --state s3://aws-kasten-io-state-store --name "${cluster}"
+}
+
+kns() {
+    local ns=${1:-"default"}
+    kubectl config set-context $(kubectl config current-context) --namespace="${ns}"
+}
