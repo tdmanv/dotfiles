@@ -36,9 +36,13 @@
 [tasks.input]
     links = [["${HM_DEST}/.inputrc", "inputrc"]]
 
+[tasks.bash__common]
+    links = [["${HM_DEST}/.bash_aliases", "bash_aliases"]]
 [tasks.bash]
+    deps = ["bash__common"]
     links = [["${HM_DEST}/.bashrc", "bashrc"]]
 [tasks.bash__mac]
+    deps = ["bash__common"]
     links = [["${HM_DEST}/.bashrc", "bashrc__mac"]]
 
 [tasks.git]

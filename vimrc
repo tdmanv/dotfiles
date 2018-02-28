@@ -649,7 +649,9 @@ au BufNewFile,BufRead *.md set syntax=markdown
 autocmd BufWrite *.md :call DeleteTrailingWS()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => time
+" => Quick Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>r :r!"date +'%M'"
+map <leader>tw :set tw=80<CR>
+map <leader>n :tabnew<CR>
 
