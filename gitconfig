@@ -6,6 +6,8 @@
 	excludesfile = ~/.gitignore
 [push]
     default = simple
+[merge]
+	tool = vimdiff
 [diff]
 	tool = vimdiff
 [difftool]
@@ -13,3 +15,4 @@
 [alias]
 	ls = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
     glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+    mbm = merge-base master HEAD

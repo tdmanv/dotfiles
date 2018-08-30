@@ -39,12 +39,28 @@ if [ -x "$(command -v kubectl)" ]; then
     source <(kubectl completion bash)
 fi
 
-kc() {
-    local cluster=${1:-"testcluster5.aws.kasten.io"}
-    kops export kubecfg --state s3://aws-kasten-io-state-store --name "${cluster}"
-}
+alias kl="kubectl"
+alias kx="kubectx"
+alias kns="kubens"
 
-kns() {
-    local ns=${1:-"default"}
-    kubectl config set-context $(kubectl config current-context) --namespace="${ns}"
-}
+
+export PATH="$PATH:${HOME}/src/go/bin"
+export GOPATH="${HOME}/src/k10/go"
+
+#export GOPATH="${HOME}/src/go"
+export GOBIN="${GOPATH}/bin"
+export GOROOT="/usr/local/lib/go"
+export GO_EXTLINK_ENABLED=0 
+export CGO_ENABLED=0
+
+export PATH=$PATH:${GOBIN}
+
+source <(awskeys use tom)
+export AWS_DEFAULT_REGION="us-west-2"
+
+alias xclip="xclip -selection c"
+
+export EDITOR=vim
+
+source ~/.github_token
+

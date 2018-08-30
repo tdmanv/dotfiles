@@ -330,10 +330,12 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.yaml :call DeleteTrailingWS()
 autocmd BufWrite *.java :call DeleteTrailingWS()
 autocmd BufWrite *.sh :call DeleteTrailingWS()
 autocmd BufWrite *.pp :call DeleteTrailingWS()
 autocmd BufWrite *.rb :call DeleteTrailingWS()
+autocmd BufWrite *.rst :call DeleteTrailingWS()
 
 set guitablabel=%t
 
@@ -462,6 +464,11 @@ map <space> za
 set foldnestmax=2
 set expandtab
 
+
+au FileType yaml set expandtab
+au FileType yaml set shiftwidth=2
+au FileType yaml set tabstop=2
+au FileType yaml set foldmethod=manual
 
 au FileType python set expandtab
 au FileType python set shiftwidth=4
