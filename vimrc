@@ -120,7 +120,7 @@ vnoremap <silent> # :call VisualSearch('b')<CR>
 
 " When you press gv you vimgrep after the selected text
 vnoremap <silent> gv :call VisualSearch('gv')<CR>
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+" map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 
 function! CmdLine(str)
@@ -331,6 +331,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.yaml :call DeleteTrailingWS()
+autocmd BufWrite *.yml :call DeleteTrailingWS()
 autocmd BufWrite *.java :call DeleteTrailingWS()
 autocmd BufWrite *.sh :call DeleteTrailingWS()
 autocmd BufWrite *.pp :call DeleteTrailingWS()
@@ -389,8 +390,15 @@ map <leader>s? z=
 
 
 """"""""""""""""""""""""""""""
+" => Docs section
+""""""""""""""""""""""""""""""
+
+autocmd Filetype rst setlocal tabstop=2
+
+""""""""""""""""""""""""""""""
 " => Python section
 """"""""""""""""""""""""""""""
+
 let python_highlight_all = 1
 "autocmd FileType python set omnifunc=jedi#complete
 
@@ -465,6 +473,11 @@ set foldnestmax=2
 set expandtab
 
 
+au FileType yml set expandtab
+au FileType yml set shiftwidth=2
+au FileType yml set tabstop=2
+au FileType yml set foldmethod=manual
+
 au FileType yaml set expandtab
 au FileType yaml set shiftwidth=2
 au FileType yaml set tabstop=2
@@ -492,9 +505,15 @@ au! BufNewFile,BufRead *.csv setf csv
 " => Golang Section
 """"""""""""""""""""""""""""""
 
+au FileType go map <leader>gp :GoImports<CR>
 au FileType go map <leader>gi :GoImplements<CR>
 au FileType go map <leader>gb :GoDescribe<CR>
 au FileType go map <leader>gd :tabedit %<CR>gT:GoDef<CR>
+"au FileType go map <leader>gf :GoDeclsDir<CR>
+
+"let g:go_def_mode = 'godef'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 "La Tex
 "IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -506,6 +525,16 @@ set grepprg=grep\ -nH\ $*
 
 "set errorformat=%*[^"]"%f"%*\D%l: %m,"%f"%*\D%l: %m,%-G%f:%l: (Each undeclared identifier is reported only once,%-G%f:%l: for each function it appears in.),%-GIn file included from %f:%l:%c,%-GIn file included from %f:%l,%-Gfrom %f:%l:%c,%-Gfrom %f:%l,%f:%l:%c:%m,%f(%l):%m,%f:%l:%m,"%f"\, line %l%*\D%c%*[^ ] %m,%D%*\a[%*\d]: Entering directory `%f',%X%*\a[%*\d]: Leaving directory `%f',%D%*\a: Entering directory `%f',%X%*\a: Leaving directory `%f',%DMaking %*\a in %f,%f|%l| %m
 "set errorformat=%*[^"]"%f"%*\D%l: %m,"%f"%*\D%l: %m,%-G%f:%l: (Each undeclared identifier is reported only once,%-G%f:%l: for each function it appears in.),%-Gfrom %f:%l:%c,%-Gfrom %f:%l,%f:%l:%c:%m,%f(%l):%m,%f:%l:%m,"%f"\, line %l%*\D%c%*[^ ] %m,%D%*\a[%*\d]: Entering directory `%f',%X%*\a[%*\d]: Leaving directory `%f',%D%*\a: Entering directory `%f',%X%*\a: Leaving directory `%f',%DMaking %*\a in %f,%f|%l| %m
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
+" => html
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.vue set filetype=javascript
+
+au FileType html set tabstop=2
+au FileType html set shiftwidth=2
+au FileType javascript set tabstop=2
+au FileType javascript set shiftwidth=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""r
 " => html
@@ -595,9 +624,11 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/git-time-lapse'
 Bundle 'vim-scripts/autoload_cscope.vim'
 "Bundle 'SirVer/ultisnips'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'ycm-core/YouCompleteMe'
 Bundle 'salsifis/vim-transpose'
 Bundle 'fatih/vim-go'
+Bundle 'mattn/emmet-vim'
 
 
 filetype plugin indent on

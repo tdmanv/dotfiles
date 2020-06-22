@@ -2,7 +2,7 @@
 # macros
 #
 [macros.install]
-    prefix = ["apt-get", "install", "-y", "--force-yes"]
+    prefix = ["sudo", "apt-get", "install", "-y", "--force-yes"]
 
 # Not implemented
 [macros.install__mac]

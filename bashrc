@@ -55,6 +55,9 @@ export CGO_ENABLED=0
 
 export PATH=$PATH:${GOBIN}
 
+# pip3 installed bins
+export PATH="$PATH:${HOME}/.local/bin"
+
 source <(awskeys use tom)
 export AWS_DEFAULT_REGION="us-west-2"
 
@@ -64,3 +67,5 @@ export EDITOR=vim
 
 source ~/.github_token
 
+
+complete -C /usr/local/bin/mc mc

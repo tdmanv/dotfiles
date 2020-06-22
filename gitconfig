@@ -1,9 +1,10 @@
 [user]
-	email = manville@dropbox.com
+	email = tom@kasten.io
 	name = Tom Manville
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+	autocrlf = input
 [push]
     default = simple
 [merge]
