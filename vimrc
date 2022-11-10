@@ -400,7 +400,7 @@ autocmd Filetype rst setlocal tabstop=2
 """"""""""""""""""""""""""""""
 
 let python_highlight_all = 1
-"autocmd FileType python set omnifunc=jedi#complete
+autocmd FileType python set omnifunc=jedi#complete
 
 au FileType python syn keyword pythonDecorator True None False self
 
@@ -487,7 +487,7 @@ au FileType python set expandtab
 au FileType python set shiftwidth=4
 au FileType python set tabstop=4
 au FileType python set foldmethod=manual
-let python_version_2 = 1
+let python_version_2 = 0
 
 au FileType cpp set foldmethod=syntax
 
@@ -609,7 +609,7 @@ call vundle#rc()
 
 "git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 "Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
@@ -619,16 +619,16 @@ Bundle 'aperezdc/vim-template'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'godlygeek/tabular' 
-Bundle 'vim-scripts/Vim-JDE'
+"Bundle 'vim-scripts/Vim-JDE'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/git-time-lapse'
 Bundle 'vim-scripts/autoload_cscope.vim'
 "Bundle 'SirVer/ultisnips'
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'ycm-core/YouCompleteMe'
 Bundle 'salsifis/vim-transpose'
 Bundle 'fatih/vim-go'
 Bundle 'mattn/emmet-vim'
+Bundle 'davidhalter/jedi-vim'
 
 
 filetype plugin indent on
@@ -642,9 +642,18 @@ vmap <leader>] Tabularize /^[^\[]*/l0<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Powerline setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" https://bhilburn.org/moving-to-vim-airline-from-vim-powerline/
 set encoding=utf-8
 set t_Co=256
 let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_theme = 'molokai'
 let g:airline_theme='powerlineish'
 let g:airline_theme = 'badwolf'
 
@@ -692,4 +701,5 @@ autocmd BufWrite *.md :call DeleteTrailingWS()
 map <leader>r :r!"date +'%M'"
 map <leader>tw :set tw=80<CR>
 map <leader>n :tabnew<CR>
+map <leader>f :echo expand('%:p')<CR>
 

@@ -32,7 +32,7 @@
 #
 # tools
 #
-#
+
 [tasks.input]
     links = [["${HM_DEST}/.inputrc", "inputrc"]]
 
@@ -51,7 +51,10 @@
 
 [tasks.tmux]
     cmds = [["@install", "tmux"]]
-    links = [["${HM_DEST}/.tmux.conf", "tmux.conf"]]
+    links = [
+        ["${HM_DEST}/.tmux_init.sh", "tmux_init.sh"],
+        ["${HM_DEST}/tmux.conf", "tmux.conf"]
+    ]
 
 [tasks.tmux__mac]
     links = [["${HM_DEST}/.tmux.conf", "tmux.conf__mac"]]
@@ -86,10 +89,13 @@
 [tasks.vim]
     deps = ["git", "vimrc"]
     cmds = [
-        ["@install", "vim", "bash-completion", "python-dev"],
         ["@clone", "https://github.com/gmarik/vundle.git", "${HM_DEST}/.vim/bundle/vundle"],
         ["vim", "+BundleInstall", "+qall"],
     ]
+        #["@install", "vim", "bash-completion", "python-dev"],
+
+[tasks.misc]
+    cmds = [["@install", "xclip"]]
 
 #
 # high level tasks

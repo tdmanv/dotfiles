@@ -44,10 +44,11 @@ alias kx="kubectx"
 alias kns="kubens"
 
 
-export PATH="$PATH:${HOME}/src/go/bin"
-export GOPATH="${HOME}/src/k10/go"
-
+# When installing global go binaries use uncomment the following:
 #export GOPATH="${HOME}/src/go"
+export PATH="$PATH:${HOME}/src/go/bin"
+
+export GOPATH="${HOME}/src/k10/go"
 export GOBIN="${GOPATH}/bin"
 export GOROOT="/usr/local/lib/go"
 export GO_EXTLINK_ENABLED=0 
@@ -58,7 +59,7 @@ export PATH=$PATH:${GOBIN}
 # pip3 installed bins
 export PATH="$PATH:${HOME}/.local/bin"
 
-source <(awskeys use tom)
+#source <(awskeys use tom)
 export AWS_DEFAULT_REGION="us-west-2"
 
 alias xclip="xclip -selection c"
@@ -66,6 +67,7 @@ alias xclip="xclip -selection c"
 export EDITOR=vim
 
 source ~/.github_token
+source ~/.awsrc
+export GOOGLE_APPLICATION_CREDENTIALS=/home/tom/.k10/kasten-gke-sa.json
 
 
-complete -C /usr/local/bin/mc mc
