@@ -10,6 +10,6 @@ type git >/dev/null
 
 ## download homemaker
 go install foosoft.net/projects/homemaker@latest
-${HOME}/go/bin/homemaker --verbose --task=bash --variant=linux config.toml .
+${HOME}/go/bin/homemaker -clobber --verbose --task=bash --variant=linux config.toml .
 
 
