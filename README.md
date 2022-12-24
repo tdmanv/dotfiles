@@ -15,31 +15,52 @@ curl -sLO https://github.com/tdmanv/dotfiles/archive/master.tar.gz
 tar xvf master.tar.gz
 mv dotfiles-master
 ```
-### Install dotfiles using homemaker
-If go is installed
+### Install go
+https://go.dev/doc/install
+```
+curl https://go.dev/dl/go1.19.3.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
+sudo ln -s /usr/local/go/bin/go /usr/local/bin
+```
+
+### Install files using homemaker
+
+#### Linux
 ```
 cd dotfiles
-GOPATH=$(pwd)/go go get github.com/FooSoft/homemaker
-./go/bin/homemaker --verbose --task=bash --variant=mac config.toml .
-```
-or
-```
-cd dotfiles
-curl -sLO https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz
-tar xvf ./homemaker_linux_amd64.tar.gz
-./homemaker_linux_amd64/homemaker --verbose --task=bash --variant=mac config.toml .
+go install foosoft.net/projects/homemaker@latest
+~/go/bin/homemaker --verbose --task=bash --variant=linux config.toml .
+
+# log in/out to reset bash
+~/go/bin/homemaker --verbose --task=vim --variant=linux config.toml .
+
+# YCM requires some dependencies to be built
+# https://github.com/ycm-core/YouCompleteMe
+sudo apt-get update
+sudo apt install vim-nox cmake python3-dev build-essential
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --all
+
+# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+ echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli
+# https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
 
 ```
-
-## Prebuilt docket image
-
-FROM tdmanville/devbase
-
-To build:
+#### Glcoud
 ```
-docker build -t tdmanville/devbase .
+sudo apt-get install apt-transport-https ca-certificates gnupg
 ```
-TODO:
- - Specify baseimage version rather than use latest.
- - Version devbase
-
