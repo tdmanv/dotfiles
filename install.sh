@@ -1,8 +1,15 @@
 #!/bin/bash
 
-ln -s ./dotfiles/vimrc .vimrc
-ln -s ./dotfiles/gitconfig .gitconfig
-cat ./dotfiles/bashrc >> .bashrc
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+set -uex
+
+# default installation on linux
+
+## ensure go and git are installed is installed
+type go >/dev/null
+type git >/dev/null
+
+## download homemaker
+go install foosoft.net/projects/homemaker@latest
+${HOME}/go/bin/homemaker --verbose --task=bash --variant=linux config.toml .
+
 
