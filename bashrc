@@ -48,13 +48,13 @@ alias kns="kubens"
 #export GOPATH="${HOME}/src/go"
 export PATH="$PATH:${HOME}/src/go/bin"
 
-export GOPATH="${HOME}/src/k10/go"
-export GOBIN="${GOPATH}/bin"
+#export GOPATH="${HOME}/src/k10/go"
+#export GOBIN="${GOPATH}/bin"
 export GOROOT="/usr/local/lib/go"
 export GO_EXTLINK_ENABLED=0 
 export CGO_ENABLED=0
 
-export PATH=$PATH:${GOBIN}
+#export PATH=$PATH:${GOBIN}
 
 # pip3 installed bins
 export PATH="$PATH:${HOME}/.local/bin"
