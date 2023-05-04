@@ -38,6 +38,17 @@ go install foosoft.net/projects/homemaker@latest
 ~/go/bin/homemaker --verbose --task=bash --variant=linux config.toml .
 
 # log in/out to reset bash
+
+# install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+python3 -m pip install --user --upgrade pynvim
+
+~/go/bin/homemaker --verbose --task=nvim_config --variant=linux config.toml .
+```
+```
+
+# log in/out to reset bash
 ~/go/bin/homemaker --verbose --task=vim --variant=linux config.toml .
 
 # YCM requires some dependencies to be built

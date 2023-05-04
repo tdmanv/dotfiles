@@ -68,6 +68,9 @@
         ["mv", "10-powerline-symbols.conf", "/etc/fonts/conf.d/"],
     ]
 
+[tasks.nvim_config]
+    links = [["${HM_DEST}/.config/nvim/init.vim", "init.vim"]]
+
 [tasks.vimrc]
     links = [["${HM_DEST}/.vimrc", "vimrc"]]
 
