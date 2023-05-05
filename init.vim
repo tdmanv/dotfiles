@@ -337,15 +337,15 @@ set autoread
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Git commit --verbose<CR>
-noremap <Leader>gsh :Git push<CR>
-noremap <Leader>gll :Git pull<CR>
-noremap <Leader>gs :Git<CR>
-noremap <Leader>gb :Git blame<CR>
-noremap <Leader>gd :Gvdiffsplit<CR>
-noremap <Leader>gr :GRemove<CR>
+"" Git - Commented since I use g for go
+"noremap <Leader>ga :Gwrite<CR>
+"noremap <Leader>gc :Git commit --verbose<CR>
+"noremap <Leader>gsh :Git push<CR>
+"noremap <Leader>gll :Git pull<CR>
+"noremap <Leader>gs :Git<CR>
+"noremap <Leader>gb :Git blame<CR>
+"noremap <Leader>gd :Gvdiffsplit<CR>
+"noremap <Leader>gr :GRemove<CR>
 
 " session management
 nnoremap <leader>so :OpenSession<Space>
@@ -631,3 +631,41 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+ 
+"*****************************************************************************
+"" My Modifications
+"*****************************************************************************
+ 
+" Fast editing of the .vimrc
+map <leader>e :tabnew! ~/.vimrc<cr>
+
+" When vimrc is edited, reload it
+autocmd! bufwritepost .vimrc source ~/.vimrc
+ 
+" Tab configuration
+map <leader>tn :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+vmap b :!git blame =expand("%:p")  \| sed -n =line("',=line("'>") p 
+autocmd BufRead .git/COMMIT_EDITMSG setlocal spell
+autocmd BufRead .git/COMMIT_EDITMSG set tw=70
+map Y y$
+
+" vim-go mappings
+au FileType go map <leader>gp :GoImports<CR>
+au FileType go map <leader>gi :GoImplements<CR>
+au FileType go map <leader>gb :GoDescribe<CR>
+au FileType go map <leader>gd :tabedit %<CR>gT:GoDef<CR>
+
+
+
+
+
+
+
+
+
+
+
