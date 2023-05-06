@@ -387,7 +387,8 @@ endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
+" Modified from <leader>e 
+nnoremap <silent> <leader>j :FZF -m<CR>
 "Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
 
@@ -636,28 +637,30 @@ endif
 "" My Modifications
 "*****************************************************************************
  
-" Fast editing of the .vimrc
-map <leader>e :tabnew! ~/.vimrc<cr>
-
-" When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+map Y y$
  
+" Fast editing of the .vimrc
+map <leader>e :tabnew! ~/.config/nvim/init.vim<cr> :vsp ~/.vimrc<cr>
+
 " Tab configuration
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" Git helpers
 vmap b :!git blame =expand("%:p")  \| sed -n =line("',=line("'>") p 
 autocmd BufRead .git/COMMIT_EDITMSG setlocal spell
 autocmd BufRead .git/COMMIT_EDITMSG set tw=70
-map Y y$
 
 " vim-go mappings
 au FileType go map <leader>gp :GoImports<CR>
 au FileType go map <leader>gi :GoImplements<CR>
 au FileType go map <leader>gb :GoDescribe<CR>
 au FileType go map <leader>gd :tabedit %<CR>gT:GoDef<CR>
+
+" Silver Searcher mappings
+nmap <leader>a lb"tye:Ag <C-r>t<CR>
 
 
 
