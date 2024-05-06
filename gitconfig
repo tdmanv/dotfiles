@@ -2,7 +2,7 @@
 	email = thomas.manville@veeam.com
 	name = Tom Manville
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore
 	autocrlf = input
 [push]

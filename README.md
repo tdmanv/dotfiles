@@ -64,13 +64,15 @@ npm i -g bash-language-server
 ```
 
 #### Tmux
+https://github.com/erikw/tmux-powerline?tab=readme-ov-file
+Install plugins in tmux <ctrl-a>I
 ```
-# TODO: Add powerline conf for tmux
-https://github.com/freshyjmp/powerline_config/blob/main/.tmux.powerline.conf
-```
+~/go/bin/homemaker --verbose --task=tmux config.toml .
 
 ```
 
+#### Tmux (deprecated)
+```
 # log in/out to reset bash
 ~/go/bin/homemaker --verbose --task=vim --variant=linux config.toml .
 

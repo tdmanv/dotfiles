@@ -46,14 +46,14 @@
     links = [["${HM_DEST}/.bash_aliases", "bash_aliases"]]
 
 [tasks.git]
-    cmds = [["@install", "git"]]
+    # cmds = [["@install", "git"]]
     links = [["${HM_DEST}/.gitconfig", "gitconfig"]]
 
 [tasks.tmux]
-    cmds = [["@install", "tmux"]]
+    #cmds = [["@install", "tmux"]]
     links = [
         ["${HM_DEST}/.tmux_init.sh", "tmux_init.sh"],
-        ["${HM_DEST}/tmux.conf", "tmux.conf"]
+        ["${HM_DEST}/.tmux.conf", "tmux.conf"]
     ]
 
 [tasks.tmux__mac]
