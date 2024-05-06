@@ -51,13 +51,16 @@ export PATH="$PATH:${HOME}/src/go/bin"
 #export GOPATH="${HOME}/src/k10/go"
 #export GOBIN="${GOPATH}/bin"
 export GOROOT="/usr/local/lib/go"
-export GO_EXTLINK_ENABLED=0 
+export GO_EXTLINK_ENABLED=0
 export CGO_ENABLED=0
 
 #export PATH=$PATH:${GOBIN}
 
 # pip3 installed bins
 export PATH="$PATH:${HOME}/.local/bin"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 #source <(awskeys use tom)
 export AWS_DEFAULT_REGION="us-west-2"
@@ -71,3 +74,7 @@ source ~/.awsrc
 export GOOGLE_APPLICATION_CREDENTIALS=/home/tom/.k10/kasten-gke-sa.json
 
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

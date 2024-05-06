@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# dev.sh
+# tmux_init.sh
 # Author tom
 
 set -o errexit

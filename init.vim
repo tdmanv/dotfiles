@@ -50,6 +50,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'wadackel/vim-dogrun'
+Plug 'Exafunction/codeium.vim' " TODO remove later
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -77,7 +78,7 @@ Plug 'honza/vim-snippets'
 
 " go
 "" Go Lang Bundle
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+" Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'} TMP
 
 
 " html
@@ -638,6 +639,9 @@ endif
 "*****************************************************************************
  
 map Y y$
+
+" NerdTree
+map <F2> :NERDTreeToggle<CR>
  
 " Fast editing of the .vimrc
 map <leader>e :tabnew! ~/.config/nvim/init.vim<cr> :vsp ~/.vimrc<cr>
@@ -661,6 +665,13 @@ au FileType go map <leader>gd :tabedit %<CR>gT:GoDef<CR>
 
 " Silver Searcher mappings
 nmap <leader>a lb"tye:Ag <C-r>t<CR>
+
+map <leader>n :tabnew<CR>
+" Use the arrows to something usefull
+map <right> gt<cr>
+map <left> gT<cr>
+
+let g:codeium_enabled = v:false
 
 
 

@@ -43,9 +43,32 @@ go install foosoft.net/projects/homemaker@latest
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 python3 -m pip install --user --upgrade pynvim
+sudo apt-get install python3-neovim
 
+# TODO: Use new neovim config files
 ~/go/bin/homemaker --verbose --task=nvim_config --variant=linux config.toml .
+
+# Install node
+# https://github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+nvm install --lts
+# Update npm
+npm install -g npm@10.1.0
+
+# Install bash language server
+npm i -g bash-language-server
 ```
+
+#### Python
+```
+```
+
+#### Tmux
+```
+# TODO: Add powerline conf for tmux
+https://github.com/freshyjmp/powerline_config/blob/main/.tmux.powerline.conf
+```
+
 ```
 
 # log in/out to reset bash
@@ -81,3 +104,4 @@ sudo apt-get install docker-ce docker-ce-cli
 ```
 sudo apt-get install apt-transport-https ca-certificates gnupg
 ```
+
