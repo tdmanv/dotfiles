@@ -29,7 +29,24 @@ sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.ta
 sudo ln -s /usr/local/go/bin/go /usr/local/bin
 ```
 
-### Install files using homemaker
+### Install config files using Stow
+```
+homebrew install stow
+```
+#### Configure Shell: zsh
+```
+
+# Install oh my zsh
+# run commands listed here: https://ohmyz.sh/#install
+
+# Install oh my posh 
+# run commands listed here: https://ohmyposh.dev/docs/installation/macos#set-up-your-terminal
+
+# Create configuration files
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 zsh
+```
+
+### Install files using homemaker (deprecating)
 
 #### Linux
 ```
@@ -39,11 +56,23 @@ go install foosoft.net/projects/homemaker@latest
 
 # log in/out to reset bash
 
-# install neovim
+# install neovim 
+
+## Linux
+
+```
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 python3 -m pip install --user --upgrade pynvim
 sudo apt-get install python3-neovim
+```
+
+## install neovim mac
+https://github.com/neovim/neovim/blob/master/INSTALL.md
+```
+brew install neovim
+```
+
 
 # TODO: Use new neovim config files
 ~/go/bin/homemaker --verbose --task=nvim_config --variant=linux config.toml .
