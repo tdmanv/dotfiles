@@ -56,7 +56,7 @@ go install foosoft.net/projects/homemaker@latest
 
 # log in/out to reset bash
 
-# install neovim 
+# Install neovim 
 
 ## Linux
 
@@ -65,17 +65,24 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 python3 -m pip install --user --upgrade pynvim
 sudo apt-get install python3-neovim
+
+# Deprecated using homemaker
+~/go/bin/homemaker --verbose --task=nvim_config --variant=linux config.toml .
 ```
 
 ## install neovim mac
 https://github.com/neovim/neovim/blob/master/INSTALL.md
 ```
+# Install Using Brew
 brew install neovim
+
+# Install using stow
+mkdir -p "${HOME}/.config/nvim"
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}/.config/nvim/" -v 5 nvim
+
 ```
 
 
-# TODO: Use new neovim config files
-~/go/bin/homemaker --verbose --task=nvim_config --variant=linux config.toml .
 
 # Install node
 # https://github.com/nvm-sh/nvm

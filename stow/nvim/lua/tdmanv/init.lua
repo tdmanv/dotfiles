@@ -1,0 +1,2 @@
+--local tdmanv = {}
+--tdmanv.git_diff_master = require("tdmanv.git_diff_master").git_diff_master
