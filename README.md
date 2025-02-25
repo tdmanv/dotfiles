@@ -39,7 +39,7 @@ homebrew install stow
 # Install oh my zsh
 # run commands listed here: https://ohmyz.sh/#install
 
-# Install oh my posh 
+# Install oh my posh
 # run commands listed here: https://ohmyposh.dev/docs/installation/macos#set-up-your-terminal
 
 # Create configuration files
@@ -56,7 +56,7 @@ go install foosoft.net/projects/homemaker@latest
 
 # log in/out to reset bash
 
-# Install neovim 
+# Install neovim
 
 ## Linux
 
@@ -76,9 +76,12 @@ https://github.com/neovim/neovim/blob/master/INSTALL.md
 # Install Using Brew
 brew install neovim
 
-# Install using stow
+# Link config using stow
 mkdir -p "${HOME}/.config/nvim"
 stow --dir "${HOME}/dotfiles/stow" --target "${HOME}/.config/nvim/" -v 5 nvim
+
+# Add extensions
+brew install ripgrep
 
 ```
 
