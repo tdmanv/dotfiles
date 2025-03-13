@@ -39,6 +39,7 @@ homebrew install stow
 #Linux
 sudo apt-get install stow
 ```
+
 #### Configure Shell: zsh
 ```
 
@@ -50,6 +51,20 @@ sudo apt-get install stow
 
 # Create configuration files
 stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 zsh
+```
+#### Configure Shell: tmux
+```
+sudo apt-get install tmux
+
+
+# Copy the tmux config
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 tmux
+
+# Install tmux plugin manager
+# https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install plugings using <prefix>+I
 ```
 
 ### Install files using homemaker (deprecating)
