@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
- export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/home/tom/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -105,10 +106,12 @@ alias vim=nvim
 # Configure the prompt to use oh-my-posh
 # eval "$(oh-my-posh init zsh --config /Users/thomas.manville/.config/oh-my-posh/Easy\ Term\ Theme.json)"
 # eval "$(oh-my-posh init zsh --config /Users/thomas.manville/.config/oh-my-posh/Atomic\ Theme.json)"
-eval "$(oh-my-posh init zsh --config /Users/thomas.manville/.config/oh-my-posh/zen.toml)"
+eval "$(oh-my-posh init zsh --config /home/tom/.config/oh-my-posh/zen.toml)"
 
 # https://formulae.brew.sh/formula/fzf
-source <(fzf --zsh)
+if [ command -v fzf &>/dev/null ]; then
+  source <(fzf --zsh)
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/thomas.manville/src/ops/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/thomas.manville/src/ops/google-cloud-sdk/path.zsh.inc'; fi
@@ -117,17 +120,22 @@ if [ -f '/Users/thomas.manville/src/ops/google-cloud-sdk/path.zsh.inc' ]; then .
 if [ -f '/Users/thomas.manville/src/ops/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/thomas.manville/src/ops/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Path to your oh-my-zsh installation.
-export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
-export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+if [ command -v aws &>/dev/null ]; then
+  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+fi
 
 # Add Krew to manage kubectl plugins https://krew.sigs.k8s.io/docs/user-guide/setup/install/#bash
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
 # Setup https://github.com/ahmetb/kubectx?tab=readme-ov-file#kubectl-plugins-macos-and-linux
-alias kx='kubectl ctx'
-alias kns='kubectl ns'
-source <(kubectl completion zsh)
+
+if [ command -v kubectl &>/dev/null ]; then
+  alias kx='kubectl ctx'
+  alias kns='kubectl ns'
+  source <(kubectl completion zsh)
+fi
 
 # Added by Windsurf
 export PATH="/Users/thomas.manville/.codeium/windsurf/bin:$PATH"

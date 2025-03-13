@@ -27,11 +27,17 @@ https://go.dev/doc/install
 curl https://go.dev/dl/go1.19.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
 sudo ln -s /usr/local/go/bin/go /usr/local/bin
+
+# Using snap
+sudo snap install go
 ```
 
 ### Install config files using Stow
 ```
+# Mac
 homebrew install stow
+#Linux
+sudo apt-get install stow
 ```
 #### Configure Shell: zsh
 ```
