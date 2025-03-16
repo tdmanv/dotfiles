@@ -106,7 +106,7 @@ alias vim=nvim
 # Configure the prompt to use oh-my-posh
 # eval "$(oh-my-posh init zsh --config /Users/thomas.manville/.config/oh-my-posh/Easy\ Term\ Theme.json)"
 # eval "$(oh-my-posh init zsh --config /Users/thomas.manville/.config/oh-my-posh/Atomic\ Theme.json)"
-eval "$(oh-my-posh init zsh --config /home/tom/.config/oh-my-posh/zen.toml)"
+eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/zen.toml)"
 
 # https://formulae.brew.sh/formula/fzf
 if [ command -v fzf &>/dev/null ]; then
@@ -137,5 +137,5 @@ if [ command -v kubectl &>/dev/null ]; then
   source <(kubectl completion zsh)
 fi
 
-# Added by Windsurf
-export PATH="/Users/thomas.manville/.codeium/windsurf/bin:$PATH"
+# Added by Windsurf (Disabled)
+# export PATH="/Users/thomas.manville/.codeium/windsurf/bin:$PATH"
