@@ -1,5 +1,5 @@
-local builtin = require('telescope.builtin')
 local git = require('tdmanv.git')
+local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "telescope file_files" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "telescope live_grep" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "telescope grep_string" })
@@ -41,9 +41,7 @@ require('telescope').setup {
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
         -- https://github.com/nvim-telescope/telescope.nvim/issues/394#issuecomment-966285634
-        find_files = {
-            find_command = { "rg", "--ignore", "-L", "--hidden", "--files" }
-        }
+        -- find_files = { find_command = { "rg", "--ignore", "-L", "--hidden", "--files" } }
     },
     extensions = {
         -- Your extension configuration goes here:
@@ -54,6 +52,6 @@ require('telescope').setup {
     },
     -- https://www.reddit.com/r/neovim/comments/nspg8o/telescope_find_files_not_showing_hidden_files/
     find_files = {
-        hidden = true,
+        -- hidden = true,
     }
 }

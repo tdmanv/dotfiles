@@ -83,6 +83,9 @@ stow --dir "${HOME}/dotfiles/stow" --target "${HOME}/.config/nvim/" -v 5 nvim
 # Add extensions
 brew install ripgrep
 
+# Install fd (for telescope):
+# https://github.com/sharkdp/fd/releases
+
 ```
 # Install node
 # https://github.com/nvm-sh/nvm

@@ -1,7 +1,8 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#setup
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "gopls", "bashls" },
+    -- ensure_installed = { "lua_ls", "gopls", "bashls" },
+    ensure_installed = { "lua_ls", "gopls" },
 }
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
@@ -29,7 +30,7 @@ end)
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#bashls
 -- Need to install via:
 --   npm i -g bash-language-server
-lsp.setup_servers({ 'bashls' })
+-- lsp.setup_servers({ 'bashls' })
 
 -- When you don't have mason.nvim installed
 -- You'll need to list the servers installed in your system
@@ -42,7 +43,7 @@ lsp.setup_servers({ 'gopls' })
 
 local lspconfig = require("lspconfig")
 
-lspconfig.bashls.setup({})
+-- lspconfig.bashls.setup({})
 
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
