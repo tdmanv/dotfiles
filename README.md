@@ -65,6 +65,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install plugings using <prefix>+I when in a tmux session
 ```
 
+#### Configure git
+
+This setup allows for separate Git identities for work and personal projects.
+It uses a main `.gitconfig` for common settings and conditionally includes work
+or personal configs based on the project's directory.
+```
+# Install the git configs
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 git
+```
+
 ### Install files using homemaker (deprecating)
 
 
@@ -173,5 +183,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli
 # https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
+
+```
 
 ```

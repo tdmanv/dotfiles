@@ -1,0 +1,28 @@
+# This is the base gitconfig.
+# Common settings are here.
+[core]
+       editor = vim
+       excludesfile = ~/.gitignore
+       autocrlf = input
+[push]
+    default = simple
+[merge]
+       tool = nvimdiff
+[diff]
+       tool = nvimdiff
+[difftool]
+       prompt = false
+[alias]
+    d = ! git diff --name-only --relative $(git merge-base HEAD master)
+    e = !cd -- \"${GIT_PREFIX:-.}\"; git diff --name-only --relative $(git merge-base HEAD master)
+       ls = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
+    glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+    mbm = merge-base master HEAD
+
+[init]
+  defaultBranch = main
+
+# Include Personal Settings by default
+[include]
+  path = ~/.gitconfig-personal
+  # path = ~/.gitconfig-work

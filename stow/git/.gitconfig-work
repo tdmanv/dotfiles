@@ -1,0 +1,8 @@
+[user]
+       email = thomas.manville@veeam.com
+       name = Tom Manville
+
+[url "ssh://git@github.com/kastenhq/gvddk"]
+       insteadOf = https://github.com/kastenhq/gvddk
+[url "ssh://git@github.com/kastenhq/"]
+       insteadOf = https://github.com/kastenhq/
