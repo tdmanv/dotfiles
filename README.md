@@ -77,8 +77,6 @@ stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 git
 
 ### Install files using homemaker (deprecating)
 
-
-
 ## install neovim mac
 https://github.com/neovim/neovim/blob/master/INSTALL.md
 

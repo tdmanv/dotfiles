@@ -22,7 +22,11 @@
 [init]
   defaultBranch = main
 
+[user]
+    name = Tom Manville
+    email = tdmanville@gmail.com
+
 # Include Personal Settings by default
 [include]
-  path = ~/.gitconfig-personal
+  # path = ~/.gitconfig-personal
   # path = ~/.gitconfig-work
