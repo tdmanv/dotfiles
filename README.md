@@ -23,6 +23,48 @@ homebrew install stow
 #Linux
 sudo apt-get install stow
 ```
+
+### Configure git
+
+This setup allows for separate Git identities for work and personal projects.
+It uses a main `.gitconfig` for common settings and conditionally includes work
+or personal configs based on the project's directory.
+```
+# Install the git configs
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 git
+```
+
+### Configure Shell: zsh
+
+```
+# Install oh my zsh
+# run commands listed here: https://ohmyz.sh/#install
+
+# Install oh my posh
+# run commands listed here: https://ohmyposh.dev/docs/installation/macos#set-up-your-terminal
+
+# Create configuration files
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 zsh
+```
+
+## Configure tmux
+```
+# Install Tmux (mac)
+homebrew install stow
+
+# Install Tmux (linux)
+sudo apt-get install tmux
+
+# Install the tmux config
+stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 tmux
+
+# Install tmux plugin manager
+# https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install plugings using <prefix>+I when in a tmux session
+```
+
 ### Install go
 
 TODO: try https://github.com/sbonaiva/govm
@@ -35,49 +77,16 @@ sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.ta
 sudo ln -s /usr/local/go/bin/go /usr/local/bin
 
 # Using snap (linux only)
-sudo snap install go
+sudo snap install go --classic
+```
+## install neovim
+
+https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager#ubuntu-snap
+```
+sudo snap install zig --classic # the c compiler
 ```
 
-#### Configure Shell: zsh
-```
-# Install oh my zsh
-# run commands listed here: https://ohmyz.sh/#install
-
-# Install oh my posh
-# run commands listed here: https://ohmyposh.dev/docs/installation/macos#set-up-your-terminal
-
-# Create configuration files
-stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 zsh
-```
-
-#### Configure tmux
-```
-sudo apt-get install tmux
-
-
-# Install the tmux config
-stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 tmux
-
-# Install tmux plugin manager
-# https://github.com/tmux-plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Install plugings using <prefix>+I when in a tmux session
-```
-
-#### Configure git
-
-This setup allows for separate Git identities for work and personal projects.
-It uses a main `.gitconfig` for common settings and conditionally includes work
-or personal configs based on the project's directory.
-```
-# Install the git configs
-stow --dir "${HOME}/dotfiles/stow" --target "${HOME}" -v 5 git
-```
-
-### Install files using homemaker (deprecating)
-
-## install neovim mac
+### install neovim (mac)
 https://github.com/neovim/neovim/blob/master/INSTALL.md
 
 ```
@@ -88,13 +97,16 @@ brew install neovim
 mkdir -p "${HOME}/.config/nvim"
 stow --dir "${HOME}/dotfiles/stow" --target "${HOME}/.config/nvim/" -v 5 nvim
 
-# Add extensions
+# Add extensions (mac)
 brew install ripgrep
+
+# Add extensions (linux)
+sudo snap install nvim --classic
 
 # Install fd (for telescope):
 # https://github.com/sharkdp/fd/releases
-
 ```
+
 # Install node
 # https://github.com/nvm-sh/nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -105,6 +117,8 @@ npm install -g npm@10.1.0
 # Install bash language server
 npm i -g bash-language-server
 ```
+
+### Install files using homemaker (deprecating)
 
 #### Python
 ```
