@@ -113,7 +113,7 @@ alias vim=nvim
 eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/zen.toml)"
 
 # https://formulae.brew.sh/formula/fzf
-if [ command -v fzf &>/dev/null ]; then
+if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
 
@@ -123,11 +123,13 @@ if [ -f '/Users/thomas.manville/src/ops/google-cloud-sdk/path.zsh.inc' ]; then .
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/thomas.manville/src/ops/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/thomas.manville/src/ops/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Path to your oh-my-zsh installation.
-if [ command -v aws &>/dev/null ]; then
-  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
-  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
-fi
+# Deliberately NOT exporting AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY here.
+# The SDKs and the CLI read ~/.aws/credentials themselves, so the export bought
+# nothing but handed the keys to every child process (npm postinstall scripts,
+# LSP servers, Neovim plugins, anything that can run `env`). It also pinned
+# static keys ahead of SSO and assumed roles in the credential chain.
+# For the rare tool that insists on env vars, scope it to one command:
+#   aws-vault exec <profile> -- <cmd>
 
 # Add Krew to manage kubectl plugins https://krew.sigs.k8s.io/docs/user-guide/setup/install/#bash
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -135,7 +137,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Setup https://github.com/ahmetb/kubectx?tab=readme-ov-file#kubectl-plugins-macos-and-linux
 
-if [ command -v kubectl &>/dev/null ]; then
+if command -v kubectl >/dev/null 2>&1; then
   alias kx='kubectl ctx'
   alias kns='kubectl ns'
   source <(kubectl completion zsh)
