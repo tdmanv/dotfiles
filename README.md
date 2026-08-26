@@ -99,6 +99,7 @@ stow --dir "${HOME}/dotfiles/stow" --target "${HOME}/.config/nvim/" -v 5 nvim
 
 # Add extensions (mac)
 brew install ripgrep
+brew install tree-sitter-cli
 
 # Add extensions (linux)
 sudo snap install nvim --classic
