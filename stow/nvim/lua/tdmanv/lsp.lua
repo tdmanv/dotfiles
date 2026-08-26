@@ -5,10 +5,11 @@
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
 -- Move to the previous diagnostic
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+-- (goto_prev/goto_next are deprecated since 0.11 in favour of jump())
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
 
 -- Move to the next diagnostic
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -33,8 +34,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Jump to declaration
         bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
-        -- Lists all the implementations for the symbol under the cursor
-        bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+        -- Lists all the implementations for the symbol under the cursor.
+        -- lsp-zero used to override this with the telescope picker; keep that.
+        bufmap('n', 'gi', function()
+            require('telescope.builtin').lsp_implementations({ reuse_win = true })
+        end)
 
         -- Jumps to the definition of the type symbol
         bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
